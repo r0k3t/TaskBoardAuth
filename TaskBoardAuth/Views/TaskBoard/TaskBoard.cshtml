@@ -1,0 +1,63 @@
+﻿@using TaskBoardAuth.Models
+@model TaskBoardModel
+
+@{
+    ViewBag.Title = "TaskBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div id="header">
+    <a class="button" id="addNewTaskButton" href="#"><span>Add a new task</span></a> 
+    <span>Project id: </span>
+    <span id="projectId">@Model.Project.ProjectId</span>
+    <span>Name:  </span>
+    <span>@Model.Project.Name</span>
+</div>
+<div id="tasksArea">
+    <div id="backlog" class="taskColumn">
+        <div class="taskAreaHeader">
+            <p class="title">Backlog</p>
+            <p id="backlogStatusMsg"></p>
+        </div>
+    </div>
+    <div id="planning" class="taskColumn">
+        <div class="taskAreaHeader">
+            <p class="title">Planning</p>
+            <p id="planningStatusMsg"></p>
+        </div>
+    </div>
+    <div id="inProcess" class="taskColumn">
+        <div class="taskAreaHeader">
+            <p class="title">In Process</p>
+            <p id="inprogressStatusMsg"></p>
+        </div>
+    </div>
+    <div id="qa" class="taskColumn">
+        <div class="taskAreaHeader">
+            <p class="title">Ready For QA</p>
+            <p id="qaStatusMsg"></p>
+        </div>
+    </div>
+</div>
+<div id="footer"><p>Test</p></div>
+@foreach(var task in Model.Tasks)
+{
+    var top = task.LocationTop + "px";
+    var left = task.LocationLeft + "px";
+    <div class='task' style='position: absolute; top: @top; left: @left;'><p>@task.Name</p></div>
+}
+
+<div id="newTaskDialog" style="display: none">
+    <p>Task</p>
+    <input type="text" id="taskName"/>
+    <p>Description</p>
+    <textarea rows="2" cols="20" id="taskDescription"></textarea> 
+    <p><input type="submit" value="Save" id="saveNewTaskButton"/></p>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("/Scripts/TaskBoard.js")
+}

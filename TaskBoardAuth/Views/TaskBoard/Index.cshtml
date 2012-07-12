@@ -1,0 +1,15 @@
+﻿@using TaskBoardAuth.Models
+@model IEnumerable<TaskBoardAuth.Models.Project>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (Project project in Model)
+{
+    <div>
+        @Html.ActionLink(project.Name, "TaskBoard", "TaskBoard", new { projectId = project.ProjectId }, null);
+        <p></p>
+    </div>
+}

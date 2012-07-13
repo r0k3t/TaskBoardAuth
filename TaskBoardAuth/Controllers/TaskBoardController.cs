@@ -17,20 +17,23 @@ namespace TaskBoardAuth.Controllers
             this.service = service;
         }
 
-        public ActionResult Index()
+        [Authorize]
+        public ViewResult Index()
         {
-            if (Request.IsAuthenticated)
-                return View(service.GetProjects());
-            return RedirectToAction("Login", "Account");
+            return View(service.GetProjects());
         }
         
         [HttpGet]
+        [Authorize]
         public ViewResult TaskBoard(int projectId)
         {
+            var profile = UserProfile.GetUserProfile(HttpContext.User.Identity.Name);
+            profile.Description = "testing";
             return View(service.GetTaskBoardModel(projectId));
         }
 
         [HttpPost]
+        [Authorize]
         public JsonResult CreateTask(Task task)
         {
             //todo - make sure the task has all the information it needs and then get the it saved to the DB 

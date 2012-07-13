@@ -25,12 +25,12 @@ namespace TaskBoardAuth.Tests
             controller = new TaskBoardController(service);
         }
 
-        //[TestMethod]
-        //public void Index_Will_Return_A_List_Of_Active_Projects()
-        //{
-        //    var view = controller.Index();
-        //    Assert.AreEqual(view.ViewData.Model.GetType(), typeof(List<Project>));
-        //}
+        [TestMethod]
+        public void Index_Will_Return_A_List_Of_Active_Projects()
+        {
+            var view = controller.Index();
+            Assert.AreEqual(view.ViewData.Model.GetType(), typeof(List<Project>));
+        }
 
         [TestMethod]
         public void TaskBoard_Will_Get_A_TaskBoardModel_As_Model_For_A_Given_Project_Id()

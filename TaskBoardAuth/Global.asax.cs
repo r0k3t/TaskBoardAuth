@@ -17,10 +17,10 @@ namespace TaskBoardAuth
     {
         protected void Application_Start()
         {
-            using (var context = new TaskManagerContext())
-            {
-                context.Database.Initialize(true);
-            }
+            //using (var context = new TaskManagerContext())
+            //{
+            //    context.Database.Initialize(true);
+            //}
             ControllerBuilder.Current.SetControllerFactory(new TaskBoardControllerFactory());
 
             AreaRegistration.RegisterAllAreas();

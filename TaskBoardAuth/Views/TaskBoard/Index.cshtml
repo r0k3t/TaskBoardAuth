@@ -9,7 +9,20 @@
 @foreach (Project project in Model)
 {
     <div>
-        @Html.ActionLink(project.Name, "TaskBoard", "TaskBoard", new { projectId = project.ProjectId }, null);
+        @Html.ActionLink(project.Name, "TaskBoard", "TaskBoard", new { projectId = project.ProjectId }, null)
         <p></p>
     </div>
+   
+}
+
+ <p id="projectCreationOutcome"></p>
+    <div>
+        <p>Creaet a new project</p>
+        <input id="#projectName"/>
+        <input id="#projectDescription"/>
+        <a id="addNewProjectLink">Add new project</a>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("/Scripts/Projects.js")
 }

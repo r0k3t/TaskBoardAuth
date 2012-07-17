@@ -1,9 +1,13 @@
-﻿using System.Web.Profile;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Profile;
 using System.Web.Security;
 
 namespace TaskBoardAuth.Models
 {
-    public class UserProfile : ProfileBase
+    public class UserProfile: ProfileBase
     {
         public static UserProfile GetUserProfile(string username)
         {
@@ -16,17 +20,18 @@ namespace TaskBoardAuth.Models
         }
 
         [SettingsAllowAnonymous(false)]
-        public string Description
+        public string FirstName
         {
-            get { return base["Description"] as string; }
-            set { base["Description"] = value; }
+            get { return (string)GetPropertyValue("FirstName"); }
+            set { SetPropertyValue("FirstName", value); }
         }
 
         [SettingsAllowAnonymous(false)]
-        public string Location
+        public string LastName
         {
-            get { return base["Location"] as string; }
-            set { base["Location"] = value; }
+            get { return base["LastName"] as string; }
+            set { base["LastName"] = value; }
         }
+
     }
 }

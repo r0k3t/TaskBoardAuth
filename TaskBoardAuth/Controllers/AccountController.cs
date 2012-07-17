@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using TaskBoardAuth.Models;
+using TaskBoardAuth.Services;
 
 namespace TaskBoardAuth.Controllers
 {
@@ -12,9 +13,15 @@ namespace TaskBoardAuth.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly IStaticMembershipService membershipService;
+        private readonly IProfileFactoryService profileFactoryService;
 
-        //
-        // GET: /Account/Login
+        public AccountController(IStaticMembershipService membershipService, IProfileFactoryService profileFactoryService)
+        {
+            this.profileFactoryService = profileFactoryService;
+            this.membershipService = membershipService;
+        }
+        
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -32,7 +39,7 @@ namespace TaskBoardAuth.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                if (membershipService.ValidateUser(model.UserName, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))
@@ -82,22 +89,20 @@ namespace TaskBoardAuth.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
                 MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, passwordQuestion: null, passwordAnswer: null, isApproved: true, providerUserKey: null, status: out createStatus);
+                membershipService.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                var profile = profileFactoryService.GetUserProfile(model.UserName);
+                profile.FirstName = model.FirstName;
+                profile.LastName = model.LastName;
+                profile.Save();
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, createPersistentCookie: false);
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
-                }
+                ModelState.AddModelError("", ErrorCodeToString(createStatus));
             }
-
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 

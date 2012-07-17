@@ -100,10 +100,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountControllerTests.cs" />
+    <Compile Include="Controllers\DummyUserProfile.cs" />
+    <Compile Include="Controllers\TaskBoardControllerTests.cs" />
+    <Compile Include="Controllers\TaskBoardControllerTestsMockHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="TaskBoardControllerTests.cs" />
-    <Compile Include="TaskBoardControllerTestsMockHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

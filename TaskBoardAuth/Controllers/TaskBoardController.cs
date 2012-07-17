@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TaskBoardAuth.Models;
 using TaskBoardAuth.Services;
 
@@ -10,11 +11,15 @@ namespace TaskBoardAuth.Controllers
 {
     public class TaskBoardController : Controller
     {
-        private ITaskBoardService service;
+        private readonly ITaskBoardService service;
+        private readonly IStaticMembershipService staticMembershipService;
+        private readonly IProfileFactoryService profileFactoryService;
 
-        public TaskBoardController(ITaskBoardService service)
+        public TaskBoardController(ITaskBoardService service, IStaticMembershipService staticMembershipService, IProfileFactoryService profileFactoryService)
         {
             this.service = service;
+            this.staticMembershipService = staticMembershipService;
+            this.profileFactoryService = profileFactoryService;
         }
 
         [Authorize]
@@ -24,22 +29,32 @@ namespace TaskBoardAuth.Controllers
         }
         
         [HttpGet]
-        [Authorize]
         public ViewResult TaskBoard(int projectId)
         {
-            var profile = UserProfile.GetUserProfile(HttpContext.User.Identity.Name);
-            profile.Description = "testing";
-            return View(service.GetTaskBoardModel(projectId));
+            var userName = staticMembershipService.GetUser().UserName;
+            var taskBoardModel = service.GetTaskBoardModel(projectId);
+            taskBoardModel.Name = profileFactoryService.GetPropertyValue(userName, "FirstName");
+            return View(taskBoardModel);
+        }
+
+        [HttpPost]
+        public JsonResult CreateTask(Task task)
+        {
+            task.OwnerId = (Guid)staticMembershipService.GetUser().ProviderUserKey;
+            task = service.SaveNewTask(task);
+            
+            return Json(task);
         }
 
         [HttpPost]
         [Authorize]
-        public JsonResult CreateTask(Task task)
+        public JsonResult CreatProject(Project project)
         {
-            //todo - make sure the task has all the information it needs and then get the it saved to the DB 
-            task = service.SaveNewTask(task);
-            
-            return Json(task);
+            project.ProjectStatus = ProjectStatus.Open;
+            project.OwnerId = (Guid)staticMembershipService.GetUser().ProviderUserKey;
+            service.SaveProject(project);
+
+            return Json(project);
         }
 
     }

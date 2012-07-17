@@ -44,14 +44,14 @@ namespace TaskBoardAuth.Tests
         {
             var result = controller.CreateTask(new Task
                                       {
-                                          CreatedById = 1,
+                                          //CreatedById = 1,
                                           LocationLeft = 1,
                                           Description = "",
                                           LocationTop = 1,
                                           Name = "xx",
                                           ProjectId = 1,
-                                          TaskOwnerId = 1,
-                                          UpdatedById = 1
+                                          //TaskOwnerId = 1,
+                                          //UpdatedById = 1
                                       });
             mockService.Verify(x => x.SaveNewTask(It.IsAny<Task>()), Times.Once());
             Assert.AreEqual(TaskStatus.Backlog, ((Task) result.Data).TaskStatus);

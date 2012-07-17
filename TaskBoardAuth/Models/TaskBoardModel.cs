@@ -10,5 +10,6 @@ namespace TaskBoardAuth.Models
     {
         public List<Task> Tasks { get; set; }
         public Project Project { get; set; }
+        public string Name { get; set; }
     }
 }

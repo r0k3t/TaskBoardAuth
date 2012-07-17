@@ -9,15 +9,18 @@ namespace TaskBoardAuth.Services
 {
     public class TaskBoardService: ITaskBoardService
     {
+        private TaskManagerContext context;
+        public TaskBoardService(TaskManagerContext context)
+        {
+            this.context = context;
+        }
         public List<Project> GetProjects()
         {
-            var context = new TaskManagerContext();
             return context.Projects.ToList();
         }
 
         public TaskBoardModel GetTaskBoardModel(int projectId)
         {
-            var context = new TaskManagerContext();
             var tasks = context.Tasks.Where(x => x.ProjectId == projectId).ToList();
             var project = context.Projects.Single(x => x.ProjectId == projectId);
             return new TaskBoardModel
@@ -27,18 +30,15 @@ namespace TaskBoardAuth.Services
                        };
         }
 
-        //public List<Task> GetTasks(int projectId)
-        //{
-        //    var context = new TaskManagerContext();
-        //    return context.Tasks.Where(x => x.ProjectId == projectId).ToList();
-        //}
+        public Project SaveProject(Project project)
+        {
+            context.Projects.Add(project);
+            context.SaveChanges();
+            return project; 
+        }
 
         public Task SaveNewTask(Task task)
         {
-            var context = new TaskManagerContext();
-            task.CreatedById = 1;
-            task.UpdatedById = 1;
-            task.TaskOwnerId = 1;
             context.Tasks.Add(task);
             context.SaveChanges();
             return task;

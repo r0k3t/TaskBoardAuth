@@ -15,11 +15,13 @@ namespace TaskBoardAuth.Controllers
     {
         private readonly IStaticMembershipService membershipService;
         private readonly IProfileFactoryService profileFactoryService;
+        private readonly IFormsAuthenticationService formsAuthenticationService;
 
-        public AccountController(IStaticMembershipService membershipService, IProfileFactoryService profileFactoryService)
+        public AccountController(IStaticMembershipService membershipService, IProfileFactoryService profileFactoryService, IFormsAuthenticationService formsAuthenticationService)
         {
             this.profileFactoryService = profileFactoryService;
             this.membershipService = membershipService;
+            this.formsAuthenticationService = formsAuthenticationService;
         }
         
 
@@ -90,15 +92,18 @@ namespace TaskBoardAuth.Controllers
             if (ModelState.IsValid)
             {
                 MembershipCreateStatus createStatus;
+                //Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
                 membershipService.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
                 var profile = profileFactoryService.GetUserProfile(model.UserName);
-                profile.FirstName = model.FirstName;
-                profile.LastName = model.LastName;
-                profile.Save();
+                //profile.FirstName = model.FirstName;
+                profileFactoryService.SetPropertyValue(model.UserName, "FirstName", model.FirstName);
+                //profile.LastName = model.LastName;
+                profileFactoryService.SetPropertyValue(model.UserName, "LastName", model.LastName);
+                profileFactoryService.Save(model.UserName);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, createPersistentCookie: false);
+                    formsAuthenticationService.SetAuthCookie(model.UserName, createPersistentCookie: false);
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", ErrorCodeToString(createStatus));

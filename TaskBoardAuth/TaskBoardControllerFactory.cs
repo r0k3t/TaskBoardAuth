@@ -18,7 +18,7 @@ namespace TaskBoardAuth
                     new StaticMembershipService(), new ProfileFactoryService());
 
             if(controllerType == typeof(AccountController))
-                return new AccountController(new StaticMembershipService(), new ProfileFactoryService());
+                return new AccountController(new StaticMembershipService(), new ProfileFactoryService(), new FormsAuthenticationService());
 
             return base.GetControllerInstance(requestContext, controllerType);
 

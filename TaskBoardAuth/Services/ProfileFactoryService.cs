@@ -18,5 +18,15 @@ namespace TaskBoardAuth.Services
         {
             return (string)GetUserProfile(userName).GetPropertyValue(propertyName);
         }
+
+        public void SetPropertyValue(string userName, string propertyName, string propertyValue)
+        {
+            GetUserProfile(userName).SetPropertyValue(propertyName, propertyValue);
+        }
+
+        public void Save(string userName)
+        {
+            GetUserProfile(userName).Save();
+        }
     }
 }

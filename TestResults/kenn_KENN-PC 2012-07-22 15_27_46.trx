@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="99881c66-d9fc-42dd-9f7b-7ac65c46796c" name="kenn@KENN-PC 2012-07-22 15:27:46" runUser="kenn-PC\kenn" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="7be4e06d-b969-4e44-972b-7f720acb1677">
+    <Deployment runDeploymentRoot="kenn_KENN-PC 2012-07-22 15_27_46">
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Razor.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Moq.4.0.10827\lib\NET40\Moq.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Deployment.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20505.0\lib\net40\System.Web.Http.WebHost.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebApi.Core.4.0.20505.0\lib\net40\System.Web.Http.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Newtonsoft.Json.4.5.1\lib\net40\Newtonsoft.Json.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\TaskBoardAuth\bin\TaskBoardAuth.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.Razor.2.0.20505.0\lib\net40\System.Web.Razor.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.Mvc.4.0.20505.0\lib\net40\System.Web.Mvc.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebApi.Client.4.0.20505.0\lib\net40\System.Net.Http.Formatting.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.Helpers.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-07-22T15:27:46.2350489-04:00" queuing="2012-07-22T15:27:49.2683255-04:00" start="2012-07-22T15:27:49.4087257-04:00" finish="2012-07-22T15:27:52.2635307-04:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="8" executed="8" passed="8" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="About" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="be2c6192-2eec-4a14-6306-e582bb93bb92">
+      <Execution id="d971dcca-efc2-4b3c-bf01-cee71f6e8fa4" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.HomeControllerTest, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="About" />
+    </UnitTest>
+    <UnitTest name="Register_Will_Call_CreateUser" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="a1f14c8e-4acf-0093-dd15-ccd67db823c2">
+      <Execution id="e4689b94-0743-49f8-bc7f-e193ceaed5f4" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.AccountControllerTests, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Register_Will_Call_CreateUser" />
+    </UnitTest>
+    <UnitTest name="Register_Will_Set_FirstName_And_LastName" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="463b160b-5978-4ce4-049d-cd88189d65a5">
+      <Execution id="a77b5368-3524-4d60-a436-bd23947aa017" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.AccountControllerTests, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Register_Will_Set_FirstName_And_LastName" />
+    </UnitTest>
+    <UnitTest name="Index_Will_Return_A_List_Of_Active_Projects" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="0b3b85d3-5d6a-1c15-ced1-f96aafd68360">
+      <Execution id="95abb053-862a-4c20-88e2-6b047ee98986" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.TaskBoardControllerTests, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Index_Will_Return_A_List_Of_Active_Projects" />
+    </UnitTest>
+    <UnitTest name="CreateTask_Will_Set_Status_To_Backlog_And_Call_SaveNewTask" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="04d2c8fd-2ec6-666b-94ab-16edb374280c">
+      <Execution id="9f62dc4e-77c2-4fd3-b74b-0429914c6c05" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.TaskBoardControllerTests, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CreateTask_Will_Set_Status_To_Backlog_And_Call_SaveNewTask" />
+    </UnitTest>
+    <UnitTest name="TaskBoard_Will_Get_A_TaskBoardModel_As_Model_For_A_Given_Project_Id" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="beaf6332-3aa9-2b25-d7ee-67b4179f9983">
+      <Execution id="f82c53a5-5dc4-4eb9-913f-e7a55dc1840d" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.TaskBoardControllerTests, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskBoard_Will_Get_A_TaskBoardModel_As_Model_For_A_Given_Project_Id" />
+    </UnitTest>
+    <UnitTest name="Contact" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="cae89dad-becd-0e90-49fd-75ff01de16dd">
+      <Execution id="8541a8ed-2128-47aa-a418-381e2ad66ce9" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.HomeControllerTest, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Contact" />
+    </UnitTest>
+    <UnitTest name="Index" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="669bd175-d329-67e9-9276-ae03ba421698">
+      <Execution id="1dc7aaa6-66f5-4407-b26c-c4b51759f88f" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.HomeControllerTest, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Index" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="04d2c8fd-2ec6-666b-94ab-16edb374280c" executionId="9f62dc4e-77c2-4fd3-b74b-0429914c6c05" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0b3b85d3-5d6a-1c15-ced1-f96aafd68360" executionId="95abb053-862a-4c20-88e2-6b047ee98986" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="463b160b-5978-4ce4-049d-cd88189d65a5" executionId="a77b5368-3524-4d60-a436-bd23947aa017" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="669bd175-d329-67e9-9276-ae03ba421698" executionId="1dc7aaa6-66f5-4407-b26c-c4b51759f88f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a1f14c8e-4acf-0093-dd15-ccd67db823c2" executionId="e4689b94-0743-49f8-bc7f-e193ceaed5f4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="be2c6192-2eec-4a14-6306-e582bb93bb92" executionId="d971dcca-efc2-4b3c-bf01-cee71f6e8fa4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="beaf6332-3aa9-2b25-d7ee-67b4179f9983" executionId="f82c53a5-5dc4-4eb9-913f-e7a55dc1840d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cae89dad-becd-0e90-49fd-75ff01de16dd" executionId="8541a8ed-2128-47aa-a418-381e2ad66ce9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="9f62dc4e-77c2-4fd3-b74b-0429914c6c05" testId="04d2c8fd-2ec6-666b-94ab-16edb374280c" testName="CreateTask_Will_Set_Status_To_Backlog_And_Call_SaveNewTask" computerName="KENN-PC" duration="00:00:01.0793545" startTime="2012-07-22T15:27:49.4555258-04:00" endTime="2012-07-22T15:27:50.9531284-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f62dc4e-77c2-4fd3-b74b-0429914c6c05">
+    </UnitTestResult>
+    <UnitTestResult executionId="95abb053-862a-4c20-88e2-6b047ee98986" testId="0b3b85d3-5d6a-1c15-ced1-f96aafd68360" testName="Index_Will_Return_A_List_Of_Active_Projects" computerName="KENN-PC" duration="00:00:00.0747943" startTime="2012-07-22T15:27:50.9687285-04:00" endTime="2012-07-22T15:27:51.0935287-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="95abb053-862a-4c20-88e2-6b047ee98986">
+    </UnitTestResult>
+    <UnitTestResult executionId="a77b5368-3524-4d60-a436-bd23947aa017" testId="463b160b-5978-4ce4-049d-cd88189d65a5" testName="Register_Will_Set_FirstName_And_LastName" computerName="KENN-PC" duration="00:00:00.1663529" startTime="2012-07-22T15:27:51.2807290-04:00" endTime="2012-07-22T15:27:51.4679293-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a77b5368-3524-4d60-a436-bd23947aa017">
+    </UnitTestResult>
+    <UnitTestResult executionId="1dc7aaa6-66f5-4407-b26c-c4b51759f88f" testId="669bd175-d329-67e9-9276-ae03ba421698" testName="Index" computerName="KENN-PC" duration="00:00:00.2365192" startTime="2012-07-22T15:27:51.7019298-04:00" endTime="2012-07-22T15:27:51.9515302-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1dc7aaa6-66f5-4407-b26c-c4b51759f88f">
+    </UnitTestResult>
+    <UnitTestResult executionId="e4689b94-0743-49f8-bc7f-e193ceaed5f4" testId="a1f14c8e-4acf-0093-dd15-ccd67db823c2" testName="Register_Will_Call_CreateUser" computerName="KENN-PC" duration="00:00:00.0217537" startTime="2012-07-22T15:27:51.9983303-04:00" endTime="2012-07-22T15:27:52.0451304-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e4689b94-0743-49f8-bc7f-e193ceaed5f4">
+    </UnitTestResult>
+    <UnitTestResult executionId="d971dcca-efc2-4b3c-bf01-cee71f6e8fa4" testId="be2c6192-2eec-4a14-6306-e582bb93bb92" testName="About" computerName="KENN-PC" duration="00:00:00.0094066" startTime="2012-07-22T15:27:52.0451304-04:00" endTime="2012-07-22T15:27:52.0763304-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d971dcca-efc2-4b3c-bf01-cee71f6e8fa4">
+    </UnitTestResult>
+    <UnitTestResult executionId="f82c53a5-5dc4-4eb9-913f-e7a55dc1840d" testId="beaf6332-3aa9-2b25-d7ee-67b4179f9983" testName="TaskBoard_Will_Get_A_TaskBoardModel_As_Model_For_A_Given_Project_Id" computerName="KENN-PC" duration="00:00:00.0270085" startTime="2012-07-22T15:27:52.0763304-04:00" endTime="2012-07-22T15:27:52.1231305-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f82c53a5-5dc4-4eb9-913f-e7a55dc1840d">
+    </UnitTestResult>
+    <UnitTestResult executionId="8541a8ed-2128-47aa-a418-381e2ad66ce9" testId="cae89dad-becd-0e90-49fd-75ff01de16dd" testName="Contact" computerName="KENN-PC" duration="00:00:00.0068830" startTime="2012-07-22T15:27:52.1387305-04:00" endTime="2012-07-22T15:27:52.1699306-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8541a8ed-2128-47aa-a418-381e2ad66ce9">
+    </UnitTestResult>
+  </Results>
+</TestRun>

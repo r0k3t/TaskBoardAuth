@@ -8,10 +8,10 @@
     <div style="margin-left: auto; margin-right: auto; width: 780px;">
         <div style="background-image: url('/Images/PostItNote.png'); float: left; height: 310px; width: 330px; margin-right: 30px; margin-bottom: 30px;"></div>
         <div style="float: left; height: 330px; width: 420px;">
-            @using (Html.BeginForm(new {ViewBag.ReturnUrl}))
+            @using (Html.BeginForm("Login", "Account"))
             {
                 @Html.ValidationSummary(true, "Log in was unsuccessful. Please correct the errors and try again.")
-
+                @Html.Hidden("returnUrl", Url.Action("Index", "TaskBoard"))
 
                 <fieldset>
                     <legend>Log in Form</legend>
@@ -26,13 +26,13 @@
                         </li>
                         <li>
                             @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe, new {@class = "checkbox"})
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
                         </li>
                     </ol>
                     <input type="submit" value="Log in" />
                 </fieldset>
                 <p>
-                    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new {id = "registerLink"})
+                    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
                 </p>
             }
 

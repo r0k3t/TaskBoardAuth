@@ -1,3 +1,10 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (HttpContext.Current.Request.RawUrl.Equals("/"))
+    {
+        Layout = "~/Views/Shared/_MainLoginPageLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }

@@ -24,10 +24,11 @@ a {
     a:link, a:visited,
     a:active, a:hover {
         color: #333;
+        text-decoration: none;
     }
 
     a:hover {
-        background-color: #c7d1d6;
+        text-decoration: underline;
     }
 
 header, footer, hgroup,
@@ -60,8 +61,8 @@ mark {
 h1, h2, h3,
 h4, h5, h6 {
     color: #1e74d5;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 h1 {
@@ -90,6 +91,33 @@ h5, h6 {
 .content-wrapper {
     margin: 0 auto;
     width: 100%;
+}
+
+.topHeader {
+    height: 40px;
+    width: 100%;
+    background: -moz-linear-gradient(#F1F1F1, #E0E0E0) repeat scroll 0 0 transparent;
+}
+
+.topLogo 
+{
+    clear: none;
+    float: left;
+    margin-left: 32px;
+    margin-top: 8px;
+    width: auto;
+}
+
+.topCenter 
+{
+   
+    border-Left: 1px solid #FAFAFA;
+    box-shadow: -1px 0 0 #E0E0E0;
+    clear: none;
+    float: left;
+    margin: 0 0 0 10px;
+    padding: 10px;
+    width: auto;
 }
 
 #body {
@@ -131,25 +159,35 @@ footer {
 
 /* login
 ----------------------------------------------------------*/
+
 #login {
-    display: block;
-    font-size: .85em;
-    margin: 20px 0 12px;
-    text-align: right;
+    background: -moz-linear-gradient(#F1F1F1, #E0E0E0) repeat scroll 0 0 transparent;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #FAFAFA, 0 1px 0 #FAFAFA inset;
+    list-style: none outside none;
+    margin: 5px 6px 1px 1px;
+    padding: 4px;
 }
 
-    #login a {
-        background-color: #d3dce0;
-        margin-left: 10px;
-        margin-right: 3px;
-        padding: 2px 3px;
+    #login a.logoff {
+        background: -moz-linear-gradient(#F1F1F1, #E0E0E0) repeat scroll 0 0 transparent;
+        box-shadow: 0 1px 0 #FAFAFA, 0 1px 0 #FAFAFA inset;
+         border: 1px solid #DDDDDD;
+        color: #333;
+        margin-left: 6px;
+        margin-right: 2px;
+        margin-bottom: 2px;
+        padding: 1px 3px 1px 3px;
         text-decoration: none;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
     }
 
-    #login a.username {
-        background: none;
-        margin-left: 0px;
-        text-decoration: underline;
+    #login a.username 
+    {
+        font-weight: bold;
+        margin-left: 5px;
     }
 
     #login ul {

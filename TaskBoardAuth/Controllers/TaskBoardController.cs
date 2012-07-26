@@ -37,6 +37,12 @@ namespace TaskBoardAuth.Controllers
             return View(taskBoardModel);
         }
 
+        [HttpGet]
+        public ViewResult Edit(int projectId)
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult CreateTask(Task task)
         {

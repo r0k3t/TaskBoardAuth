@@ -183,7 +183,10 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\showDetails.png" />
+    <Content Include="Images\editIcon.png" />
     <Content Include="Images\PostItNote.png" />
+    <Content Include="Images\toast.jpg" />
     <Content Include="Images\userIcon25x25.jpg" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.2.js" />
@@ -257,6 +260,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_MainLoginPageLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TaskBoard\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

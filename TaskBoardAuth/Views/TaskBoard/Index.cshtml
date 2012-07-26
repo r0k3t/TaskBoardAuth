@@ -1,4 +1,5 @@
-﻿@using TaskBoardAuth.Models
+﻿@using System.Globalization
+@using TaskBoardAuth.Models
 @model IEnumerable<TaskBoardAuth.Models.Project>
 
 @{
@@ -6,22 +7,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (Project project in Model)
-{
-    <div>
-        @Html.ActionLink(project.Name, "TaskBoard", "TaskBoard", new { projectId = project.ProjectId }, null)
-        <p></p>
-    </div>
-   
-}
+<div id="ProjectViewMainContent">
+    <p id="projectCreationOutcome"></p>
 
- <p id="projectCreationOutcome"></p>
-    <div>
-        <p>Creaet a new project</p>
-        <input id="#projectName"/>
-        <input id="#projectDescription"/>
-        <a id="addNewProjectLink">Add new project</a>
-    </div>
+    <h4>Current Projects</h4>
+
+    @foreach (Project project in Model)
+    {
+        <div class="project">
+            <div class="projectName">
+                @Html.ActionLink(project.Name, "TaskBoard", "TaskBoard", new {projectId = project.ProjectId}, null)
+            </div>
+            <div class="projectAdminLinks">
+                  <img id="showDetails_@project.ProjectId.ToString(CultureInfo.InvariantCulture)"
+                     alt="Show Details" 
+                     src="/Images/showDetails.png"/>
+                <a href="@Url.Action("Edit", "TaskBoard", new { projectId = project.ProjectId })">
+                    <img alt="edit project" src="/Images/editIcon.png"/>
+                </a>
+              
+            </div>
+            <p></p>
+            <div class="projectDetails"
+                 id="DetailsContainer_@project.ProjectId.ToString(CultureInfo.InvariantCulture)">
+                
+                Details for the project. It is awesome! You are cool, lets eat ice cream!  
+            </div>
+            <p></p>
+        </div>
+    }
+
+    <h4>Create a new project</h4>
+    <input id="#projectName"/>
+    <input id="#projectDescription"/>
+    <a id="addNewProjectLink">Add new project</a>
+
+</div>
+<div class="toolTip" id="editProjectToolTip" style="display:none;">
+    Edit This Project.
+</div>
+<div class="toolTip" id="ShowDescriptionToolTip" style="display:none;">
+    Show details for this project.
+</div>
 
 @section Scripts {
     @Scripts.Render("/Scripts/Projects.js")

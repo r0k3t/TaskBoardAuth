@@ -42,8 +42,7 @@
 
     $('img[id^="showDetails_"]').click(function (evt) {
         var detailsContainerToShow = evt.target.id.replace("showDetails_", "DetailsContainer_");
-        alert(detailsContainerToShow);
-        detailsContainerToShow.slideDown(500);
+        $('#' + detailsContainerToShow).slideDown(1000);
     });
 
     function getProject() {

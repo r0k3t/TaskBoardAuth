@@ -9,7 +9,6 @@
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        
         <div class="topHeader">
             <div class="topLogo">
                 <h3>Task Manager</h3>
@@ -26,14 +25,13 @@
                 </section>
             </div>
         </div>
-        
         <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
-            </section>
         </div>
-
+        
+        <div style="height: 22px; width: 100%; background-color: #c2c2c2; clear: both; margin: 0px; padding: 0px;">
+            Hi there.
+        </div>
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
     </body>

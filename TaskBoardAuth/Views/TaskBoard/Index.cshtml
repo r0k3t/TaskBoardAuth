@@ -8,7 +8,7 @@
 }
 
 <div id="ProjectViewMainContent">
-    <p id="projectCreationOutcome"></p>
+    
 
     <h4>Current Projects</h4>
 
@@ -18,22 +18,19 @@
             <div class="projectName">
                 @Html.ActionLink(project.Name, "TaskBoard", "TaskBoard", new {projectId = project.ProjectId}, null)
             </div>
-            <div class="projectAdminLinks">
-                  <img id="showDetails_@project.ProjectId.ToString(CultureInfo.InvariantCulture)"
+            <div class="projectAdminLinks clear-fix">
+                <img id="showDetails_@project.ProjectId.ToString(CultureInfo.InvariantCulture)"
                      alt="Show Details" 
                      src="/Images/showDetails.png"/>
                 <a href="@Url.Action("Edit", "TaskBoard", new { projectId = project.ProjectId })">
                     <img alt="edit project" src="/Images/editIcon.png"/>
                 </a>
-              
             </div>
-            <p></p>
-            <div class="projectDetails"
+            <div class="projectDetails" style="display: none;"
                  id="DetailsContainer_@project.ProjectId.ToString(CultureInfo.InvariantCulture)">
                 
                 Details for the project. It is awesome! You are cool, lets eat ice cream!  
             </div>
-            <p></p>
         </div>
     }
 
@@ -41,8 +38,9 @@
     <input id="#projectName"/>
     <input id="#projectDescription"/>
     <a id="addNewProjectLink">Add new project</a>
-
+    <p id="projectCreationOutcome"></p>
 </div>
+
 <div class="toolTip" id="editProjectToolTip" style="display:none;">
     Edit This Project.
 </div>

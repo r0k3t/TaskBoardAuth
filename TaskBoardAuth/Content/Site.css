@@ -1,16 +1,18 @@
 ﻿html {
-    background-color: #fff;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 body {
-    background-color: #fff;
+    background-color: #f9f9f9;
     color: #333;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     font-size: .85em;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 a {
@@ -26,6 +28,8 @@ a:active, a:hover {
     color: #333;
     text-decoration: none;
 }
+
+a img { border: none; }
 
 a:hover { text-decoration: underline; }
 
@@ -74,6 +78,7 @@ h5, h6 { font-size: 1em; }
 .content-wrapper {
     margin: 0 auto;
     width: 100%;
+    height: 100%;
 }
 
 .topHeader {
@@ -85,6 +90,7 @@ h5, h6 { font-size: 1em; }
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1F1F1', endColorstr='#778aa5'); /* for IE */
     height: 40px;
     width: 100%;
+    margin-bottom: 0px;
 }
 
 .topLogo {
@@ -106,14 +112,28 @@ h5, h6 { font-size: 1em; }
     width: auto;    
 }
 
-#body { }
+#body {
+    height: 95%;
+    margin: 0px;
+    padding: 0px;
+}
 
-.main-content { }
+.main-content {
+    
+}
 
-#ProjectViewMainContent {
+#ProjectViewMainContent 
+{
+    margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #f1f1f1;
     width: 700px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100%;
+    clear: both;
 }
 
 
@@ -123,13 +143,15 @@ footer {
     background-color: #e2e2e2;
     clear: both;
     font-size: .8em;
-    height: 100px;
+    height: 22px;
 }
 
 /* -- Project ---------------------------------------------- */
 .project {
     -moz-border-radius: 3px;
     background: -moz-linear-gradient(#F1F1F1, #778aa5) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear, left top, left bottom, from(#F1F1F1), to(#778aa5)); /* for webkit browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1F1F1', endColorstr='#778aa5'); /* for IE */
     border: 1px solid #8f9cad;
     border-radius: 3px;
     box-shadow: 0 1px 0 #bfc7d1, 0 1px 0 #afb8c1 inset;
@@ -139,7 +161,7 @@ footer {
     margin-right: 1px;
     padding: 1px 3px 1px 3px;
     text-decoration: none;
-    height: 34px;
+    min-height: 38px;
 }
 
 .projectName {
@@ -148,8 +170,10 @@ footer {
 
 .projectAdminLinks {
     float: right;
-     -moz-border-radius: 3px;
+    -moz-border-radius: 3px;
     background: -moz-linear-gradient(#F1F1F1, #778aa5) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear, left top, left bottom, from(#F1F1F1), to(#778aa5)); /* for webkit browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1F1F1', endColorstr='#778aa5'); /* for IE */
     border: 1px solid #8f9cad;
     border-radius: 3px;
     box-shadow: 0 1px 0 #bfc7d1, 0 1px 0 #afb8c1 inset;
@@ -176,13 +200,16 @@ footer {
 }
 
 .projectDetails {
-    margin: 10px;
-     -moz-border-radius: 3px;
-    background: -moz-linear-gradient(#F1F1F1, #778aa5) repeat scroll 0 0 transparent;
+    margin: 2px 2px 2px 10px;
+    -moz-border-radius: 3px;
+    background-color: #f1f1f1;
     border: 1px solid #8f9cad;
     border-radius: 3px;
     box-shadow: 0 1px 0 #bfc7d1, 0 1px 0 #afb8c1 inset;
     color: #333;
+    padding: 4px;
+    clear: both;
+    min-height: 80px;
 }
 /* site title
 ----------------------------------------------------------*/
@@ -208,11 +235,10 @@ footer {
 #login {
     background: -moz-linear-gradient(#F1F1F1, #778aa5) repeat scroll 0 0 transparent;
     background: -webkit-gradient(linear, left top, left bottom, from(#F1F1F1), to(#778aa5)); /* for webkit browsers */
-    background: -webkit-gradient(linear, left top, left bottom, from(#F1F1F1), to(#778aa5)); /* for webkit browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1F1F1', endColorstr='#778aa5'); /* for IE */
     border: 1px solid #8f9cad;
     border-radius: 3px;
     box-shadow: 0 1px 0 #bfc7d1, 0 1px 0 #afb8c1 inset;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1F1F1', endColorstr='#778aa5'); /* for IE */
     list-style: none outside none;
     margin: 5px 6px 1px 1px;
     padding: 4px;

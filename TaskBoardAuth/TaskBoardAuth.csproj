@@ -183,6 +183,7 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\cross-button.png" />
     <Content Include="Images\showDetails.png" />
     <Content Include="Images\editIcon.png" />
     <Content Include="Images\PostItNote.png" />

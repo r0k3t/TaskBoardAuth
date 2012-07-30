@@ -199,6 +199,15 @@ footer {
     position: absolute;
 }
 
+.toolTipWarning {
+    width: 180px;
+    height: 162px;
+    padding: 4px 10px 4px 10px;
+    background-color: #e90010;
+    color: #fff200;
+    position: absolute;
+}
+
 .projectDetails {
     margin: 2px 2px 2px 10px;
     -moz-border-radius: 3px;

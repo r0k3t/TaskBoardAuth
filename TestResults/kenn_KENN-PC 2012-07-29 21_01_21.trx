@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="a546e8ce-a8db-4dc0-b7aa-9debfa363fa9" name="kenn@KENN-PC 2012-07-29 21:01:21" runUser="kenn-PC\kenn" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="7be4e06d-b969-4e44-972b-7f720acb1677">
+    <Deployment userDeploymentRoot="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\TestResults" useDefaultDeploymentRoot="false" runDeploymentRoot="kenn_KENN-PC 2012-07-29 21_01_21">
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Moq.4.0.10827\lib\NET40\Moq.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\TaskBoardAuth\bin\TaskBoardAuth.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20505.0\lib\net40\System.Web.Http.WebHost.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebApi.Core.4.0.20505.0\lib\net40\System.Web.Http.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Newtonsoft.Json.4.5.1\lib\net40\Newtonsoft.Json.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Deployment.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.Razor.2.0.20505.0\lib\net40\System.Web.Razor.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.Mvc.4.0.20505.0\lib\net40\System.Web.Mvc.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebApi.Client.4.0.20505.0\lib\net40\System.Net.Http.Formatting.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.Helpers.dll" />
+      <DeploymentItem filename="C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Razor.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-07-29T21:01:21.7459114-04:00" queuing="2012-07-29T21:01:23.1239815-04:00" start="2012-07-29T21:01:23.1395816-04:00" finish="2012-07-29T21:01:23.7791827-04:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Index" storage="c:\users\kenn\documents\visual studio 2010\projects\taskboardauth\taskboardauth.tests\bin\debug\taskboardauth.tests.dll" id="669bd175-d329-67e9-9276-ae03ba421698">
+      <Execution id="54296b54-86e7-4297-aea1-f9e9bfe6eb51" />
+      <TestMethod codeBase="C:/Users/kenn/Documents/Visual Studio 2010/Projects/TaskBoardAuth/TaskBoardAuth.Tests/bin/Debug/TaskBoardAuth.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TaskBoardAuth.Tests.Controllers.HomeControllerTest, TaskBoardAuth.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Index" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="669bd175-d329-67e9-9276-ae03ba421698" executionId="54296b54-86e7-4297-aea1-f9e9bfe6eb51" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="54296b54-86e7-4297-aea1-f9e9bfe6eb51" testId="669bd175-d329-67e9-9276-ae03ba421698" testName="Index" computerName="KENN-PC" duration="00:00:00.1900895" startTime="2012-07-29T21:01:23.1863816-04:00" endTime="2012-07-29T21:01:23.7323826-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="54296b54-86e7-4297-aea1-f9e9bfe6eb51">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;&gt;. Actual:&lt;(null)&gt;. </Message>
+          <StackTrace>   at CallSite.Target(Closure , CallSite , Type , String , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid3[T0,T1,T2](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at TaskBoardAuth.Tests.Controllers.HomeControllerTest.Index() in C:\Users\kenn\Documents\Visual Studio 2010\Projects\TaskBoardAuth\TaskBoardAuth.Tests\Controllers\HomeControllerTest.cs:line 25
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

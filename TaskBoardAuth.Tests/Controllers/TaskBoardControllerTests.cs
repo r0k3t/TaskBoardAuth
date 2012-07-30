@@ -18,6 +18,7 @@ namespace TaskBoardAuth.Tests.Controllers
         private Mock<ITaskBoardService> mockService;
         private Mock<IStaticMembershipService> mockStaticMembershipService;
         private Mock<IProfileFactoryService> mockProfileFactoryService;
+        private Guid fakeProviderUserKey;
 
         [TestInitialize]
         public void Setup()
@@ -25,8 +26,9 @@ namespace TaskBoardAuth.Tests.Controllers
             mockService = new Mock<ITaskBoardService>();
             mockService = TaskBoardControllerTestsMockHelper.SetupUpServiceMocks(mockService);
 
+            fakeProviderUserKey = Guid.NewGuid();
             var userMock = new Mock<MembershipUser>();
-            userMock.Setup(u => u.ProviderUserKey).Returns(Guid.NewGuid());
+            userMock.Setup(u => u.ProviderUserKey).Returns(fakeProviderUserKey);
             userMock.Setup(u => u.UserName).Returns("kenn");
 
             mockStaticMembershipService = new Mock<IStaticMembershipService>();
@@ -70,5 +72,24 @@ namespace TaskBoardAuth.Tests.Controllers
 
         }
 
+        [TestMethod] 
+        public void CreatProject_Will_Return_A_Project_As_A_JsonResult()
+        {
+            var result = controller.CreateProject(new Project
+                                                      {
+                                                          Name = "test name",
+                                                          Description = "test description"
+                                                      });
+            mockService.Verify(x => x.SaveProject(It.IsAny<Project>()), Times.Once());
+            Assert.AreEqual(fakeProviderUserKey, ((Project)result.Data).OwnerId);
+        }
+
+        [TestMethod]
+        public void CreateProject_Wont_Attempt_To_Create_A_Project_With_A_Blank_Or_Null_Name()
+        {
+            var result = controller.CreateProject(new Project());
+            mockService.Verify(x => x.SaveProject(It.IsAny<Project>()), Times.Never());
+            Assert.AreEqual("Please supply a name for this project.", ((Project)result.Data).Name);
+        }
     }
 }

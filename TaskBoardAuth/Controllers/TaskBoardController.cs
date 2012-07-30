@@ -54,8 +54,13 @@ namespace TaskBoardAuth.Controllers
 
         [HttpPost]
         [Authorize]
-        public JsonResult CreatProject(Project project)
+        public JsonResult CreateProject(Project project)
         {
+            if (string.IsNullOrEmpty(project.Name) || string.IsNullOrEmpty(project.Description))
+                return Json(new Project
+                                {
+                                    Name = "Please supply a name for this project."
+                                });
             project.ProjectStatus = ProjectStatus.Open;
             project.OwnerId = (Guid)staticMembershipService.GetUser().ProviderUserKey;
             service.SaveProject(project);

@@ -25,18 +25,21 @@
                 <a href="@Url.Action("Edit", "TaskBoard", new { projectId = project.ProjectId })">
                     <img alt="edit project" src="/Images/editIcon.png"/>
                 </a>
+                <img id="closeProject_@project.ProjectId.ToString(CultureInfo.InvariantCulture)" 
+                     src="/Images/cross-button.png"
+                     alt="Close Project"/>
             </div>
             <div class="projectDetails" style="display: none;"
                  id="DetailsContainer_@project.ProjectId.ToString(CultureInfo.InvariantCulture)">
-                
-                Details for the project. It is awesome! You are cool, lets eat ice cream!  
+                @project.Description
             </div>
         </div>
     }
 
-    <h4>Create a new project</h4>
-    <input id="#projectName"/>
-    <input id="#projectDescription"/>
+    <h4>Add a new project</h4>
+    <input id="projectName"/>
+    <textarea rows="2" cols="20" id="projectDescription">
+    </textarea>
     <a id="addNewProjectLink">Add new project</a>
     <p id="projectCreationOutcome"></p>
 </div>
@@ -46,6 +49,11 @@
 </div>
 <div class="toolTip" id="ShowDescriptionToolTip" style="display:none;">
     Show details for this project.
+</div>
+<div class="toolTipWarning" id="closeToolTip" style="display:none;">
+    <p style="font-weight: bold">Danger!</p>
+    Closing a project will remove it from this list and others will not be able to see it until it 
+    has been re-opened.
 </div>
 
 @section Scripts {

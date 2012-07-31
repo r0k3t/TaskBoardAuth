@@ -6399,7 +6399,7 @@ $.widget("ui.dialog", {
 				.html(title)
 				.prependTo(uiDialogTitlebar);
 
-		//handling of deprecated beforeclose (vs beforeClose) option
+		//handling of deprecated beforeclose (vs beforeCloseProject) option
 		//Ticket #4669 http://dev.jqueryui.com/ticket/4669
 		//TODO: remove in 1.9pre
 		if ($.isFunction(options.beforeclose) && !$.isFunction(options.beforeClose)) {
@@ -6458,7 +6458,7 @@ $.widget("ui.dialog", {
 		var self = this,
 			maxZ, thisZ;
 		
-		if (false === self._trigger('beforeClose', event)) {
+		if (false === self._trigger('beforeCloseProject', event)) {
 			return;
 		}
 
@@ -6791,11 +6791,11 @@ $.widget("ui.dialog", {
 			uiDialog = self.uiDialog;
 
 		switch (key) {
-			//handling of deprecated beforeclose (vs beforeClose) option
+			//handling of deprecated beforeclose (vs beforeCloseProject) option
 			//Ticket #4669 http://dev.jqueryui.com/ticket/4669
 			//TODO: remove in 1.9pre
 			case "beforeclose":
-				key = "beforeClose";
+				key = "beforeCloseProject";
 				break;
 			case "buttons":
 				self._createButtons(value);
@@ -9401,7 +9401,7 @@ $.extend(Datepicker.prototype, {
 					(showAnim == 'fadeIn' ? 'fadeOut' : 'hide'))]((showAnim ? duration : null), postProcess);
 			if (!showAnim)
 				postProcess();
-			var onClose = this._get(inst, 'onClose');
+			var onClose = this._get(inst, 'onCloseProject');
 			if (onClose)
 				onClose.apply((inst.input ? inst.input[0] : null),
 					[(inst.input ? inst.input.val() : ''), inst]);  // trigger custom callback
@@ -9423,7 +9423,7 @@ $.extend(Datepicker.prototype, {
 		inst.dpDiv.removeClass(this._dialogClass).unbind('.ui-datepicker-calendar');
 	},
 
-	/* Close date picker if clicked elsewhere. */
+	/* CloseProject date picker if clicked elsewhere. */
 	_checkExternalClick: function(event) {
 		if (!$.datepicker._curInst)
 			return;
@@ -10227,7 +10227,7 @@ $.extend(Datepicker.prototype, {
 		html += this._get(inst, 'yearSuffix');
 		if (showMonthAfterYear)
 			html += (secondary || !(changeMonth && changeYear) ? '&#xa0;' : '') + monthHtml;
-		html += '</div>'; // Close datepicker_header
+		html += '</div>'; // CloseProject datepicker_header
 		return html;
 	},
 

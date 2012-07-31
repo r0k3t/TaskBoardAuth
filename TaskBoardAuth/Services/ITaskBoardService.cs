@@ -12,5 +12,7 @@ namespace TaskBoardAuth.Services
         TaskBoardModel GetTaskBoardModel(int projectId); 
         Task SaveNewTask(Task task);
         Project SaveProject(Project project);
+        OperationStatus CloseProject(int projectId);
+
     }
 }

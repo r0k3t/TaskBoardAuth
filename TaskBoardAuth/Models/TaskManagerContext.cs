@@ -16,7 +16,7 @@ namespace TaskBoardAuth.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //Database.SetInitializer(new MyDbContextInitializer());
+            Database.SetInitializer(new MyDbContextInitializer());
 
             base.OnModelCreating(modelBuilder);
 

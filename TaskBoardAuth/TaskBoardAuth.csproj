@@ -135,6 +135,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\OperationStatus.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectStatus.cs" />
     <Compile Include="Models\Task.cs" />

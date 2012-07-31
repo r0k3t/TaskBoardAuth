@@ -9,6 +9,7 @@ using TaskBoardAuth.Services;
 
 namespace TaskBoardAuth.Controllers
 {
+    [Authorize]
     public class TaskBoardController : Controller
     {
         private readonly ITaskBoardService service;
@@ -22,7 +23,6 @@ namespace TaskBoardAuth.Controllers
             this.profileFactoryService = profileFactoryService;
         }
 
-        [Authorize]
         public ViewResult Index()
         {
             return View(service.GetProjects());
@@ -53,7 +53,6 @@ namespace TaskBoardAuth.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public JsonResult CreateProject(Project project)
         {
             if (string.IsNullOrEmpty(project.Name) || string.IsNullOrEmpty(project.Description))
@@ -61,11 +60,21 @@ namespace TaskBoardAuth.Controllers
                                 {
                                     Name = "Please supply a name for this project."
                                 });
-            project.ProjectStatus = ProjectStatus.Open;
+            project.ProjectStatus = (int)ProjectStatus.Open;
             project.OwnerId = (Guid)staticMembershipService.GetUser().ProviderUserKey;
             service.SaveProject(project);
 
             return Json(project);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public JsonResult CloseProject(int projectId)
+        {
+            var status = service.CloseProject(projectId);
+            if(!status.Success)
+                return Json(status.ErrorMessege);
+            return Json("Project Id: " + projectId + " successfully closed.");
         }
 
     }

@@ -1,6 +1,6 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
 
-    $("#addNewProjectLink").click(function(evt) {
+    $("#addNewProjectLink").click(function (evt) {
 
         evt.preventDefault();
         var projectError = checkForNewProjectError();
@@ -8,34 +8,33 @@
             $("#projectCreationOutcome").text = projectError;
         } else {
             var project = getProject();
-            alert(project.Name + " " + project.Description);
-            $.post("/TaskBoard/CreateProject", project, function(result) {
+            $.post("/TaskBoard/CreateProject", project, function (result) {
                 $('#projectCreationOutcome').text = result.name + " has been created.";
             });
         }
     });
 
     $('.projectAdminLinks a').hover(
-        function() {
+        function () {
             showToolTip('#editProjectToolTip', this);
         },
-        function() {
+        function () {
             hideToolTip('#editProjectToolTip', this);
         });
 
     $('img[id^="showDetails_"]').hover(
-        function() {
+        function () {
             showToolTip('#ShowDescriptionToolTip', this);
         },
-        function() {
+        function () {
             hideToolTip('#ShowDescriptionToolTip', this);
         });
 
     $('img[id^="closeProject_"]').hover(
-        function() {
+        function () {
             showToolTip('#closeToolTip', this);
         },
-        function() {
+        function () {
             hideToolTip('#closeToolTip', this);
         });
 
@@ -52,10 +51,23 @@
         }).slideDown(500);
     }
 
-    $('img[id^="showDetails_"]').click(function(evt) {
+    $('img[id^="showDetails_"]').click(function (evt) {
         var detailsContainerToShow = evt.target.id.replace("showDetails_", "DetailsContainer_");
         $('#' + detailsContainerToShow).slideDown(1000);
     });
+
+    $('img[id^="closeProject_"]').click(function (evt) {
+        var projectId = evt.target.id.replace("closeProject_", "");
+        $.ajax({
+            type: 'POST',
+            url: "/TaskBoard/CloseProject",
+            data: { projectId: projectId },
+            success: function (result) {
+                $('#projectCreationOutcome').text = result;
+            }
+        });
+    });
+
 
     function getProject() {
         var name = $("#projectName").val();

@@ -1,28 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using TaskBoardAuth.Models;
 using TaskBoardAuth.Models;
 
 namespace TaskBoardAuth.Services
 {
-    public class TaskBoardService: ITaskBoardService
+    public class TaskBoardService : ITaskBoardService
     {
-        private TaskManagerContext context;
+        private readonly TaskManagerContext context;
+
         public TaskBoardService(TaskManagerContext context)
         {
             this.context = context;
         }
+
+        #region ITaskBoardService Members
+
         public List<Project> GetProjects()
         {
-            return context.Projects.ToList();
+            return context.Projects.Where(x => x.ProjectStatus == (int)ProjectStatus.Open).ToList();
         }
 
         public TaskBoardModel GetTaskBoardModel(int projectId)
         {
-            var tasks = context.Tasks.Where(x => x.ProjectId == projectId).ToList();
-            var project = context.Projects.Single(x => x.ProjectId == projectId);
+            List<Task> tasks = context.Tasks.Where(x => x.ProjectId == projectId).ToList();
+            Project project = context.Projects.Single(x => x.ProjectId == projectId);
             return new TaskBoardModel
                        {
                            Project = project,
@@ -34,7 +36,23 @@ namespace TaskBoardAuth.Services
         {
             context.Projects.Add(project);
             context.SaveChanges();
-            return project; 
+            return project;
+        }
+
+        public OperationStatus CloseProject(int projectId)
+        {
+            var status = new OperationStatus {Success = true};
+            try
+            {
+                context.Projects.Single(x => x.ProjectId == projectId).ProjectStatus = (int)ProjectStatus.Closed;
+                context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                status.Success = false;
+                status.ErrorMessege = ex.ToString();
+            }
+            return status;
         }
 
         public Task SaveNewTask(Task task)
@@ -43,5 +61,7 @@ namespace TaskBoardAuth.Services
             context.SaveChanges();
             return task;
         }
+
+        #endregion
     }
 }

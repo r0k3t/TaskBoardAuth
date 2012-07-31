@@ -91,5 +91,19 @@ namespace TaskBoardAuth.Tests.Controllers
             mockService.Verify(x => x.SaveProject(It.IsAny<Project>()), Times.Never());
             Assert.AreEqual("Please supply a name for this project.", ((Project)result.Data).Name);
         }
+
+        [TestMethod]
+        public void CloseProject_Will_Call_Close_On_Selected_ProjectId()
+        {
+            const int projectId = 5;
+            const string expectedMsg = "Project Id: 5 successfully closed.";
+            mockService.Setup(x => x.CloseProject(projectId)).Returns(new OperationStatus
+                                                                         {
+                                                                             Success = true
+                                                                         });
+            var result = controller.CloseProject(5);
+            Assert.AreEqual(expectedMsg, result.Data.ToString());
+            mockService.Verify(x => x.CloseProject(It.IsAny<int>()), Times.Once());
+        }
     }
 }

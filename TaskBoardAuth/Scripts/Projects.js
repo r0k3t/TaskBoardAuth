@@ -1,15 +1,20 @@
 ﻿$(document).ready(function () {
 
+    var projectCreationOutcome = $("#projectCreationOutcome");
     $("#addNewProjectLink").click(function (evt) {
 
         evt.preventDefault();
         var projectError = checkForNewProjectError();
         if (projectError != null) {
-            $("#projectCreationOutcome").text = projectError;
+            projectCreationOutcome.addClass("message-error");
+            projectCreationOutcome.removeClass("message-success");
+            projectCreationOutcome.text(projectError);
         } else {
             var project = getProject();
             $.post("/TaskBoard/CreateProject", project, function (result) {
-                $('#projectCreationOutcome').text = result.name + " has been created.";
+                projectCreationOutcome.removeClass("message-error");
+                projectCreationOutcome.addClass("message-success");
+                projectCreationOutcome.text(result.Name + " has been created.");
             });
         }
     });

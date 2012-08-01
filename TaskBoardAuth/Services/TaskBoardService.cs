@@ -14,11 +14,9 @@ namespace TaskBoardAuth.Services
             this.context = context;
         }
 
-        #region ITaskBoardService Members
-
         public List<Project> GetProjects()
         {
-            return context.Projects.Where(x => x.ProjectStatus == (int)ProjectStatus.Open).ToList();
+            return context.Projects.Where(x => x.ProjectStatus == (int) ProjectStatus.Open).ToList();
         }
 
         public TaskBoardModel GetTaskBoardModel(int projectId)
@@ -44,10 +42,10 @@ namespace TaskBoardAuth.Services
             var status = new OperationStatus {Success = true};
             try
             {
-                context.Projects.Single(x => x.ProjectId == projectId).ProjectStatus = (int)ProjectStatus.Closed;
+                context.Projects.Single(x => x.ProjectId == projectId).ProjectStatus = (int) ProjectStatus.Closed;
                 context.SaveChanges();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 status.Success = false;
                 status.ErrorMessege = ex.ToString();
@@ -61,7 +59,5 @@ namespace TaskBoardAuth.Services
             context.SaveChanges();
             return task;
         }
-
-        #endregion
     }
 }

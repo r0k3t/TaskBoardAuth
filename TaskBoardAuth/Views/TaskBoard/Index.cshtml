@@ -1,6 +1,6 @@
-﻿@using System.Globalization
-@using TaskBoardAuth.Models
-@model IEnumerable<TaskBoardAuth.Models.Project>
+﻿@using TaskBoardAuth.Models
+@using System.Globalization
+@model IEnumerable<Project>
 
 @{
     ViewBag.Title = "Index";
@@ -10,7 +10,7 @@
 <div id="ProjectViewMainContent">
     
 
-    <h4>Current Projects</h4>
+    <h2>Current Projects</h2>
 
     @foreach (Project project in Model)
     {
@@ -22,7 +22,7 @@
                 <img id="showDetails_@project.ProjectId.ToString(CultureInfo.InvariantCulture)"
                      alt="Show Details" 
                      src="/Images/showDetails.png"/>
-                <a href="@Url.Action("Edit", "TaskBoard", new { projectId = project.ProjectId })">
+                <a href="@Url.Action("Edit", "TaskBoard", new {projectId = project.ProjectId})">
                     <img alt="edit project" src="/Images/editIcon.png"/>
                 </a>
                 <img id="closeProject_@project.ProjectId.ToString(CultureInfo.InvariantCulture)" 
@@ -36,21 +36,37 @@
         </div>
     }
 
-    <h4>Add a new project</h4>
-    <input id="projectName"/>
-    <textarea rows="2" cols="20" id="projectDescription">
-    </textarea>
-    <a id="addNewProjectLink">Add new project</a>
-    <p id="projectCreationOutcome"></p>
+    <h2>Add a new project</h2>
+    
+    <div class="clear-fix">
+        <hr/>
+        <div style="margin-bottom: 8px; margin-left: 12px;">
+            <span>Project Name: </span>
+            <input id="projectName" size="80" maxlength="80"/>
+            <p>Description (required)</p>
+            <textarea rows="4" cols="70" id="projectDescription">
+            </textarea>
+        </div>
+        <hr/>
+        <div>
+            <a id="addNewProjectLink">Add new project</a>
+            <span id="projectCreationOutcome"></span>
+            <p>At this point you still need to manually refresh the page. (sorry about that)</p>
+        </div>
+    </div>
+    
+    
+   
+    
 </div>
 
-<div class="toolTip" id="editProjectToolTip" style="display:none;">
+<div class="toolTip" id="editProjectToolTip" style="display: none;">
     Edit This Project.
 </div>
-<div class="toolTip" id="ShowDescriptionToolTip" style="display:none;">
+<div class="toolTip" id="ShowDescriptionToolTip" style="display: none;">
     Show details for this project.
 </div>
-<div class="toolTipWarning" id="closeToolTip" style="display:none;">
+<div class="toolTipWarning" id="closeToolTip" style="display: none;">
     <p style="font-weight: bold">Danger!</p>
     Closing a project will remove it from this list and others will not be able to see it until it 
     has been re-opened.

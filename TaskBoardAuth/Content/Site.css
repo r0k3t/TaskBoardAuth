@@ -63,13 +63,22 @@ h4, h5, h6 {
 
 h1 { font-size: 2em; }
 
-h2 { font-size: 1.75em; }
+h2 {
+     font-size: 1.75em;
+    margin: 2px 2px 6px 2px;
+}
 
 h3 { font-size: 1.2em; }
 
 h4 { font-size: 1.1em; }
 
 h5, h6 { font-size: 1em; }
+
+hr  
+{
+    display: block; height: 1px;
+    border: 0; border-top: 1px solid #aeaeae;
+    margin: 1em 0; padding: 0; }
 
 
 /* main layout
@@ -219,6 +228,27 @@ footer {
     padding: 4px;
     clear: both;
     min-height: 80px;
+}
+
+#addNewProjectLink 
+{
+    margin: 2px;
+    padding: 8px;
+    -moz-border-radius: 3px;
+    border: 1px solid #8f9cad;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #12c929;
+    background: -moz-linear-gradient(#d9ffe7, #12c929) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear, left top, left bottom, from(#d9ffe7), to(#12c929)); /* for webkit browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d9ffe7', endColorstr='#12c929'); /* for IE */
+}
+
+#addNewProjectLink:hover {
+    -webkit-box-shadow: 2px 2px 3px rgba(235, 255, 45, 0.75);
+    -moz-box-shadow:    2px 2px 3px rgba(235, 255, 45, 0.75);
+    box-shadow:         2px 2px 3px rgba(235, 255, 45, 0.75);
 }
 /* site title
 ----------------------------------------------------------*/
@@ -539,7 +569,7 @@ fieldset input[type="submit"] {
 }
 
 .message-success {
-    color: #7ac0da;
+    color: #00ff54;
     font-size: 1.3em;
     font-weight: bold;
     margin: 20px 0 10px 0;

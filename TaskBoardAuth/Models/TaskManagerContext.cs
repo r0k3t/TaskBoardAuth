@@ -55,12 +55,14 @@ namespace TaskBoardAuth.Models
                                        
                                          Description = "First Test Project",
                                          Name = "First Test Project",
+                                         ProjectStatus = (int)ProjectStatus.Open
                                      };
                 dbContext.Projects.Add(projectOne);
                 var projectTwo = new Project
                                      {                                        
                                          Description = "Test Project Two",
                                          Name = "Just some more data to test with...",
+                                         ProjectStatus = (int)ProjectStatus.Open
                                      };
                 dbContext.Projects.Add(projectTwo);
                 //var taskOne = new Task

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>  
+<html>  
+    <head>  
+        <title>QUnit Test Suite</title>  
+        <link rel="stylesheet" href="/Content/qunit.css" type="text/css" media="screen" />  
+        <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="qunit.js"></script>  
+        <script type="text/javascript" src="Projects.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var projectNameInput = document.createElement('input');
+                projectNameInput.setAttribute("Id", "projectName");
+                var projectDescriptionInput = document.createElement('input');
+                projectDescriptionInput.setAttribute("Id", "projectDescription");
+                $('#testContainer').append(projectNameInput);
+                $('#testContainer').append(projectDescriptionInput);
+
+                module("checkForNewProjectError() tests");
+                test('', function () {
+                    var expectedMessage = "You must supply a project name.";
+                    equal(expectedMessage, checkForNewProjectError(), 'checkForNewProjectError() - We expected the the error message to be: ' + expectedMessage);
+
+                    $('#projectName').val("Test Project");
+                    expectedMessage = "You must supply a project description.";
+                    equal(expectedMessage, checkForNewProjectError(), 'checkForNewProjectError() - We expected the the error message to be: ' + expectedMessage);
+
+                    $('#projectDescription').val("Description");
+                    equal(null, checkForNewProjectError(), 'checkForNewProjectError() - We expected the the error message to be null');
+                });
+
+                module("addNewProjectLink click tests");
+                test('', function () {
+                    var postWasCalled = false;
+                    jQuery.post = function () {
+                        postWasCalled = true;
+                    };
+                    $('#projectName').val("");
+                    $("#addNewProjectLink").click();
+                    equal(postWasCalled, false, 'post() Was NOT called because both projectName is blank.');
+
+                    $('#projectName').val("Test Project");
+                    $("#addNewProjectLink").click();
+                    equal(postWasCalled, true, 'post() Was called because both projectName and projectDescription have a value.');
+                });
+
+                module("setProjectCreatedMessege tests");
+                test('', function () {
+                    var expectedMessege = "Test Project has been created.";
+                    setProjectCreatedMessege({Name: "Test Project"});
+                    var actualMessege = $("#projectCreationOutcome").text();
+                    equal(expectedMessege, actualMessege, "projectCreationOutcome was set to correct message.");
+                });
+            });
+        </script>  
+    </head>  
+    <body>  
+        <h1 id="qunit-header">QUnit Test Suite</h1>  
+        <h2 id="qunit-banner"></h2>  
+        <div id="qunit-testrunner-toolbar"></div>  
+        <h2 id="qunit-userAgent"></h2>  
+        <ol id="qunit-tests"></ol>  
+        <div id="testContainer">
+            <a id="addNewProjectLink"></a>
+            <p id="projectCreationOutcome"></p>
+        </div>
+    </body>  
+</html>
+  

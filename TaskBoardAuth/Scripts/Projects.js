@@ -12,9 +12,7 @@
         } else {
             var project = getProject();
             $.post("/TaskBoard/CreateProject", project, function (result) {
-                projectCreationOutcome.removeClass("message-error");
-                projectCreationOutcome.addClass("message-success");
-                projectCreationOutcome.text(result.Name + " has been created.");
+                setProjectCreatedMessege(result);
             });
         }
     });
@@ -72,25 +70,30 @@
             }
         });
     });
-
-
-    function getProject() {
-        var name = $("#projectName").val();
-        var description = $("#projectDescription").val();
-        return {
-            Name: name,
-            Description: description
-        };
-    }
-
-    function checkForNewProjectError() {
-        if ($("#projectName").val() == "") {
-            return "You must supply a project name.";
-        }
-        if ($("#projectDescription").val() == "") {
-            return "You must supply a project description.";
-        }
-        return null;
-    }
-
 });
+
+function getProject() {
+    var name = $("#projectName").val();
+    var description = $("#projectDescription").val();
+    return {
+        Name: name,
+        Description: description
+    };
+}
+
+function checkForNewProjectError() {
+    if ($("#projectName").val() == "") {
+        return "You must supply a project name.";
+    }
+    if ($("#projectDescription").val() == "") {
+        return "You must supply a project description.";
+    }
+    return null;
+}
+
+function setProjectCreatedMessege(result) {
+    var projectCreationOutcome = $("#projectCreationOutcome");
+    projectCreationOutcome.removeClass("message-error");
+    projectCreationOutcome.addClass("message-success");
+    projectCreationOutcome.text(result.Name + " has been created.");
+}

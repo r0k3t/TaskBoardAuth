@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>  
+<html>  
+    <head>  
+        <title>QUnit Test Suite</title>  
+        <link rel="stylesheet" href="/Content/qunit.css" type="text/css" media="screen" />  
+        <script type="text/javascript" src="jquery-1.6.2.min.js"> </script>
+        <script type="text/javascript" src="jquery-ui-1.8.11.min.js"> </script>
+        <script type="text/javascript" src="qunit.js"> </script>  
+        <script type="text/javascript" src="TaskBoard.js"> </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                module("updateProjectStatus() tests");
+                test('', function () {
+                    var expectedMessage = "Task was null";
+                    var postWasCalled = false;
+                    jQuery.post = function () {
+                        postWasCalled = true;
+                    };
+                    var result = updateTaskStatus(null);
+                    equal(expectedMessage, result, "Task was null so we returned an error.");
+                    var task = {
+                        "name": "test task",
+                        "description": "xxxxx",
+                        "projectId": 23
+                    };
+                    updateTaskStatus(task);
+                    equal(postWasCalled, true, 'post() Was called because task was not null');
+
+                });
+
+                module("getUpdateInformationFromDroppedElement() tests");
+                test('', function () {
+                    var taskElement = $('.task');
+                    var result = getUpdateInformationFromDroppedElement(taskElement, 10, 10, "Design");
+                    equal(2, result.TaskId, 'Task Id was set correctly');
+                });
+            });
+        </script>  
+    </head>  
+    <body>  
+        <h1 id="qunit-header">QUnit Test Suite</h1>  
+        <h2 id="qunit-banner"></h2>  
+        <div id="qunit-testrunner-toolbar"></div>  
+        <h2 id="qunit-userAgent"></h2>  
+        <ol id="qunit-tests"></ol>  
+        <div id="testContainer">
+            <div class="task ui-draggable" style="left: 295px; position: absolute; top: 221px;">
+                <span id="2" style="display: none"></span>
+                <p>testing 2</p>
+            </div>
+        </div>
+    </body>  
+</html>

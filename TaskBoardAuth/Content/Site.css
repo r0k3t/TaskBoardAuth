@@ -512,40 +512,6 @@ fieldset input[type="submit"] {
     padding: 7px;
 }
 
-/* ajax login/registration dialog */
-
-.ui-dialog {
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border: 0 none;
-    border-radius: 0;
-    font-family: inherit;
-    font-size: 1.0em;
-}
-
-.ui-dialog input {
-    font-family: inherit;
-    font-size: 1.25em;
-}
-
-.ui-dialog-titlebar {
-    background: none;
-    border: 0 none;
-    color: inherit;
-    float: right;
-    font-weight: inherit;
-}
-
-.ui-dialog-titlebar-close {
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-}
-
-.ui-widget-header {
-    background: none;
-    border: 0 none;
-}
 
 .modal-popup { }
 

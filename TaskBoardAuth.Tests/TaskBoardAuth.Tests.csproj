@@ -114,6 +114,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TaskBoardAuth.Core\TaskBoardAuth.Core.csproj">
+      <Project>{F67C64BF-63C5-45A1-BBFC-8BBB549EC98D}</Project>
+      <Name>TaskBoardAuth.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskBoardAuth.Infrastructure\TaskBoardAuth.Infrastructure.csproj">
+      <Project>{36076F5B-8024-41E2-BF3F-B4D6D5F85F74}</Project>
+      <Name>TaskBoardAuth.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TaskBoardAuth\TaskBoardAuth.csproj">
       <Project>{C75FCB43-3082-4B22-9841-B7BDAEB06719}</Project>
       <Name>TaskBoardAuth</Name>

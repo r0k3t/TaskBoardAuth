@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TaskBoardAuth.Controllers;
-using TaskBoardAuth.Models;
-using TaskBoardAuth.Services;
+using TaskBoardAuth.Core.Services;
+using TaskBoardAuth.Infrastructure;
+using TaskBoardAuth.Infrastructure.Repositories;
 
 namespace TaskBoardAuth
 {
@@ -14,7 +15,7 @@ namespace TaskBoardAuth
         protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)
         {
             if(controllerType == typeof(TaskBoardController))
-                return new TaskBoardController(new TaskBoardService(new TaskManagerContext()), 
+                return new TaskBoardController(new TaskBoardRepository(), 
                     new StaticMembershipService(), new ProfileFactoryService());
 
             if(controllerType == typeof(AccountController))

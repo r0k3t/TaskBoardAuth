@@ -1,5 +1,4 @@
-﻿@using TaskBoardAuth.Models
-@model TaskBoardModel
+﻿@model TaskBoardAuth.Core.Models.TaskBoardModel
 
 @{
     ViewBag.Title = "TaskBoard";
@@ -46,7 +45,10 @@
 {
     var top = task.LocationTop + "px";
     var left = task.LocationLeft + "px";
-    <div class='task' style='position: absolute; top: @top; left: @left;'><p>@task.Name</p></div>
+    <div class='task' style='position: absolute; top: @top; left: @left;'>
+        <span style="display: none" id="@task.TaskId"></span>
+        <p>@task.Name</p>
+    </div>
 }
 
 <div id="newTaskDialog" style="display: none">

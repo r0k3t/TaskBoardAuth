@@ -1,29 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using TaskBoardAuth.Models;
-using TaskBoardAuth.Services;
+using TaskBoardAuth.Core.Interfaces;
+using TaskBoardAuth.Core.Models;
 
 namespace TaskBoardAuth.Controllers
 {
-
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly IFormsAuthenticationService formsAuthenticationService;
         private readonly IStaticMembershipService membershipService;
         private readonly IProfileFactoryService profileFactoryService;
-        private readonly IFormsAuthenticationService formsAuthenticationService;
 
-        public AccountController(IStaticMembershipService membershipService, IProfileFactoryService profileFactoryService, IFormsAuthenticationService formsAuthenticationService)
+        public AccountController(IStaticMembershipService membershipService,
+                                 IProfileFactoryService profileFactoryService,
+                                 IFormsAuthenticationService formsAuthenticationService)
         {
             this.profileFactoryService = profileFactoryService;
             this.membershipService = membershipService;
             this.formsAuthenticationService = formsAuthenticationService;
         }
-        
+
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -93,7 +93,8 @@ namespace TaskBoardAuth.Controllers
             {
                 MembershipCreateStatus createStatus;
                 //Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-                membershipService.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                membershipService.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null,
+                                             out createStatus);
                 var profile = profileFactoryService.GetUserProfile(model.UserName);
                 //profile.FirstName = model.FirstName;
                 profileFactoryService.SetPropertyValue(model.UserName, "FirstName", model.FirstName);
@@ -127,7 +128,6 @@ namespace TaskBoardAuth.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 // ChangePassword will throw an exception rather
                 // than return false in certain failure scenarios.
                 bool changePasswordSucceeded;
@@ -169,6 +169,7 @@ namespace TaskBoardAuth.Controllers
         }
 
         #region Status Codes
+
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
             // See http://go.microsoft.com/fwlink/?LinkID=177550 for
@@ -179,7 +180,8 @@ namespace TaskBoardAuth.Controllers
                     return "User name already exists. Please enter a different user name.";
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+                    return
+                        "A user name for that e-mail address already exists. Please enter a different e-mail address.";
 
                 case MembershipCreateStatus.InvalidPassword:
                     return "The password provided is invalid. Please enter a valid password value.";
@@ -197,15 +199,19 @@ namespace TaskBoardAuth.Controllers
                     return "The user name provided is invalid. Please check the value and try again.";
 
                 case MembershipCreateStatus.ProviderError:
-                    return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return
+                        "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
 
                 case MembershipCreateStatus.UserRejected:
-                    return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return
+                        "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
 
                 default:
-                    return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return
+                        "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
             }
         }
+
         #endregion
     }
 }

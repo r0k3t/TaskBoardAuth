@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Moq;
-using TaskBoardAuth.Models;
-using TaskBoardAuth.Services;
+using TaskBoardAuth.Core.Interfaces;
+using TaskBoardAuth.Core.Models;
 
 namespace TaskBoardAuth.Tests.Controllers
 {
     public class TaskBoardControllerTestsMockHelper
     {
-        public static Mock<ITaskBoardService> SetupUpServiceMocks(Mock<ITaskBoardService> mockService)
+        public static Mock<ITaskBoardRepository> SetupUpServiceMocks(Mock<ITaskBoardRepository> mockService)
         {
             mockService.Setup(x => x.GetTaskBoardModel(It.IsAny<int>())).Returns(new TaskBoardModel
                                                                                      {

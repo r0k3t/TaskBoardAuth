@@ -4,8 +4,9 @@ using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using TaskBoardAuth.Controllers;
-using TaskBoardAuth.Models;
-using TaskBoardAuth.Services;
+using TaskBoardAuth.Core.Interfaces;
+using TaskBoardAuth.Core.Models;
+
 
 namespace TaskBoardAuth.Tests.Controllers
 {

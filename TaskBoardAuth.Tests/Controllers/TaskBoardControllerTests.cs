@@ -5,8 +5,8 @@ using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using TaskBoardAuth.Controllers;
-using TaskBoardAuth.Models;
-using TaskBoardAuth.Services;
+using TaskBoardAuth.Core.Interfaces;
+using TaskBoardAuth.Core.Models;
 
 namespace TaskBoardAuth.Tests.Controllers
 {
@@ -14,8 +14,8 @@ namespace TaskBoardAuth.Tests.Controllers
     public class TaskBoardControllerTests
     {
         private TaskBoardController controller;
-        private ITaskBoardService service;
-        private Mock<ITaskBoardService> mockService;
+        private ITaskBoardRepository service;
+        private Mock<ITaskBoardRepository> mockService;
         private Mock<IStaticMembershipService> mockStaticMembershipService;
         private Mock<IProfileFactoryService> mockProfileFactoryService;
         private Guid fakeProviderUserKey;
@@ -23,7 +23,7 @@ namespace TaskBoardAuth.Tests.Controllers
         [TestInitialize]
         public void Setup()
         {
-            mockService = new Mock<ITaskBoardService>();
+            mockService = new Mock<ITaskBoardRepository>();
             mockService = TaskBoardControllerTestsMockHelper.SetupUpServiceMocks(mockService);
 
             fakeProviderUserKey = Guid.NewGuid();
@@ -61,14 +61,14 @@ namespace TaskBoardAuth.Tests.Controllers
         {
             var result = controller.CreateTask(new Task
                                       { 
-                                          LocationLeft = 1,
                                           Description = "",
-                                          LocationTop = 1,
                                           Name = "xx",
                                           ProjectId = 1,
                                       });
             mockService.Verify(x => x.SaveNewTask(It.IsAny<Task>()), Times.Once());
             Assert.AreEqual(TaskStatus.Backlog, ((Task) result.Data).TaskStatus);
+            Assert.AreEqual(12, ((Task)result.Data).LocationLeft);
+            Assert.AreEqual(190, ((Task)result.Data).LocationTop);
 
         }
 

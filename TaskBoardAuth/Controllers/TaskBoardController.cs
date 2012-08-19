@@ -1,38 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
-using TaskBoardAuth.Models;
-using TaskBoardAuth.Services;
+using TaskBoardAuth.Core.Interfaces;
+using TaskBoardAuth.Core.Models;
 
 namespace TaskBoardAuth.Controllers
 {
     [Authorize]
     public class TaskBoardController : Controller
     {
-        private readonly ITaskBoardService service;
-        private readonly IStaticMembershipService staticMembershipService;
         private readonly IProfileFactoryService profileFactoryService;
+        private readonly ITaskBoardRepository repository;
+        private readonly IStaticMembershipService staticMembershipService;
 
-        public TaskBoardController(ITaskBoardService service, IStaticMembershipService staticMembershipService, IProfileFactoryService profileFactoryService)
+        public TaskBoardController(ITaskBoardRepository repository, IStaticMembershipService staticMembershipService,
+                                   IProfileFactoryService profileFactoryService)
         {
-            this.service = service;
+            this.repository = repository;
             this.staticMembershipService = staticMembershipService;
             this.profileFactoryService = profileFactoryService;
         }
 
         public ViewResult Index()
         {
-            return View(service.GetProjects());
+            return View(repository.GetProjects());
         }
-        
+
         [HttpGet]
         public ViewResult TaskBoard(int projectId)
         {
-            var userName = staticMembershipService.GetUser().UserName;
-            var taskBoardModel = service.GetTaskBoardModel(projectId);
+            string userName = staticMembershipService.GetUser().UserName;
+            TaskBoardModel taskBoardModel = repository.GetTaskBoardModel(projectId);
             taskBoardModel.Name = profileFactoryService.GetPropertyValue(userName, "FirstName");
             return View(taskBoardModel);
         }
@@ -46,9 +43,11 @@ namespace TaskBoardAuth.Controllers
         [HttpPost]
         public JsonResult CreateTask(Task task)
         {
-            task.OwnerId = (Guid)staticMembershipService.GetUser().ProviderUserKey;
-            task = service.SaveNewTask(task);
-            
+            task.LocationLeft = 12;
+            task.LocationTop = 190;
+            task.OwnerId = (Guid) staticMembershipService.GetUser().ProviderUserKey;
+            task = repository.SaveNewTask(task);
+
             return Json(task);
         }
 
@@ -60,9 +59,9 @@ namespace TaskBoardAuth.Controllers
                                 {
                                     Name = "Please supply a name for this project."
                                 });
-            project.ProjectStatus = (int)ProjectStatus.Open;
-            project.OwnerId = (Guid)staticMembershipService.GetUser().ProviderUserKey;
-            service.SaveProject(project);
+            project.ProjectStatus = (int) ProjectStatus.Open;
+            project.OwnerId = (Guid) staticMembershipService.GetUser().ProviderUserKey;
+            repository.SaveProject(project);
 
             return Json(project);
         }
@@ -71,11 +70,10 @@ namespace TaskBoardAuth.Controllers
         [Authorize]
         public JsonResult CloseProject(int projectId)
         {
-            var status = service.CloseProject(projectId);
-            if(!status.Success)
+            OperationStatus status = repository.CloseProject(projectId);
+            if (!status.Success)
                 return Json(status.ErrorMessege);
             return Json("Project Id: " + projectId + " successfully closed.");
         }
-
     }
 }

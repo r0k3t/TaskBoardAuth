@@ -1,25 +1,33 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
     $(".task").draggable();
     $(".taskColumn").resizable({ handles: "e" });
 
-    $(".task").click(function() {
-        $(this).remove();
-    });
+    //$(".task").click(function() {
+    //    $(this).remove();
+    //});
+
     $("#planning").droppable({
-        drop: function(event, ui) {
-            $("#planningStatusMsg").text("Task moved to planning. Top:" + ui.position.top.toString() + " Left: " + ui.position.left.toString());
+        drop: function (event, ui) {
+            var droppedElement = ui.draggable;
+            var result = getUpdateInformationFromDroppedElement(droppedElement, ui.position.top, ui.position.left, "Design");
+            if (is('String', result))
+                alert(result);
+            else
+                //update the task status
             $(".task").draggable();
         }
     });
-    $("#addNewTaskButton").click(function(evt) {
+
+
+    $("#addNewTaskButton").click(function (evt) {
         evt.preventDefault();
         $('#newTaskDialog').dialog('open');
 
     });
 
-    $('#saveNewTaskButton').click(function(evt) {
+    $('#saveNewTaskButton').click(function (evt) {
         evt.preventDefault();
-        $.post("/TaskBoard/CreateTask", getTask(), function(result) {
+        $.post("/TaskBoard/CreateTask", getNewTask(), function (result) {
             $("body").append("<div class='task' style='position: absolute; top: 12px; left: 3px;'><p>" + result.Name + "</p></div>");
             $(".task").draggable();
         });
@@ -31,18 +39,52 @@
         autoOpen: false
     });
 
-    function getTask() {
+    function getNewTask() {
         var name = $("#taskName").val();
         var description = $("#taskDescription").val();
         var projectId = $('#projectId').text();
         return (name == "") ? null : {
             Name: name,
             Description: description,
-            ProjectId: projectId,
-            LocationTop: 100,
-            LocationLeft: 120
+            ProjectId: projectId
         };
     }
 
 
 });
+
+function updateTaskStatus(task) {
+    var returnMessage = "";
+    if (task === null) {
+        returnMessage = "Task was null";
+        return returnMessage;
+    }
+    $.post("/TaskBoard/UpateTask", task, function (result) {
+        returnMessage = result.name;
+    });
+    return returnMessage;
+}
+
+function getUpdateInformationFromDroppedElement(element, positionTop, positionLeft, status) {
+    var taskId = $(element.children('span')[0]).attr('id');
+    var task = {
+        TaskId: taskId,
+        LocationTop: positionTop,
+        LocationLeft: positionLeft,
+        TaskStatus: status
+    };
+    if (task.TaskId === null)
+        return "TaskId was null";
+    if (task.LocationLeft === null)
+        return "LocationLeft was null";
+    if (task.LocationTop === null)
+        return "LocationTop was null";
+    if (task.TaskStatus === null)
+        return "TaskStatus was null";
+    return task;
+}
+
+function is(type, obj) {
+    var clas = Object.prototype.toString.call(obj).slice(8, -1);
+    return obj !== undefined && obj !== null && clas === type;
+}

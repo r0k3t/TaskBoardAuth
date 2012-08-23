@@ -34,6 +34,16 @@
                     var result = getUpdateInformationFromDroppedElement(taskElement, 10, 10, "Design");
                     equal(2, result.TaskId, 'Task Id was set correctly');
                 });
+
+                module("('#planning').droppable() tests");
+                test('', function () {
+                    var postWasCalled = false;
+                    jQuery.post = function () {
+                        postWasCalled = true;
+                    };
+                    $("#planning").droppable();
+                    equal(postWasCalled, true, 'post() Was called because task was not null');
+                });
             });
         </script>  
     </head>  
@@ -48,6 +58,7 @@
                 <span id="2" style="display: none"></span>
                 <p>testing 2</p>
             </div>
+            <div id="planning"></div>
         </div>
     </body>  
 </html>

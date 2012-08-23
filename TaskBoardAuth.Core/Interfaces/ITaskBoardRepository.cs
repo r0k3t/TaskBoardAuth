@@ -10,6 +10,6 @@ namespace TaskBoardAuth.Core.Interfaces
         Task SaveNewTask(Task task);
         Project SaveProject(Project project);
         OperationStatus CloseProject(int projectId);
-
+        OperationStatus UpdateStatus(Task task);
     }
 }

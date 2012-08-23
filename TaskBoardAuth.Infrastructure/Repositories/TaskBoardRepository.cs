@@ -56,6 +56,25 @@ namespace TaskBoardAuth.Infrastructure.Repositories
             return status;
         }
 
+        public OperationStatus UpdateStatus(Task task)
+        {
+            var status = new OperationStatus { Success = true };
+            var selectedTask = context.Tasks.First(x => x.TaskId == task.TaskId);
+            selectedTask.LocationLeft = task.LocationLeft;
+            selectedTask.LocationTop = task.LocationTop;
+            selectedTask.TaskStatus = task.TaskStatus;
+            try
+            {
+                context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                status.Success = false;
+                status.ErrorMessege = ex.ToString();
+            }
+            return status;
+        }
+
         public Task SaveNewTask(Task task)
         {
             context.Tasks.Add(task);

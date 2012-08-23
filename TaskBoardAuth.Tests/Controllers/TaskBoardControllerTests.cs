@@ -105,5 +105,13 @@ namespace TaskBoardAuth.Tests.Controllers
             Assert.AreEqual(expectedMsg, result.Data.ToString());
             mockService.Verify(x => x.CloseProject(It.IsAny<int>()), Times.Once());
         }
+
+        [TestMethod]
+        public void UpdateStatus_Will_Call_Repository_UpdateStatus()
+        {
+            var task = new Task();
+            controller.UpdateTaskStatus(task);
+            mockService.Verify(x => x.UpdateStatus(It.IsAny<Task>()), Times.Once());
+        }
     }
 }

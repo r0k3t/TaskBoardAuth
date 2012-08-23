@@ -9,12 +9,13 @@
     $("#planning").droppable({
         drop: function (event, ui) {
             var droppedElement = ui.draggable;
-            var result = getUpdateInformationFromDroppedElement(droppedElement, ui.position.top, ui.position.left, "Design");
-            if (is('String', result))
-                alert(result);
+            var dropResult = getUpdateInformationFromDroppedElement(droppedElement, ui.position.top, ui.position.left, "Design");
+            if (is('String', dropResult))
+                alert(dropResult);
             else
-                //update the task status
-            $(".task").draggable();
+                $.post("/TaskBoard/UpdateTaskStatus", dropResult, function (result) {
+                    $(".task").draggable();
+                });
         }
     });
 
@@ -28,7 +29,7 @@
     $('#saveNewTaskButton').click(function (evt) {
         evt.preventDefault();
         $.post("/TaskBoard/CreateTask", getNewTask(), function (result) {
-            $("body").append("<div class='task' style='position: absolute; top: 12px; left: 3px;'><p>" + result.Name + "</p></div>");
+            $("body").append("<div class='task' style='position: absolute; top: 190px; left: 12px;'><p>" + result.Name + "</p></div>");
             $(".task").draggable();
         });
         $('#newTaskDialog').dialog('close');

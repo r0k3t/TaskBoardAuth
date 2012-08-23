@@ -75,5 +75,14 @@ namespace TaskBoardAuth.Controllers
                 return Json(status.ErrorMessege);
             return Json("Project Id: " + projectId + " successfully closed.");
         }
+
+        [HttpPost]
+        [Authorize]
+        public JsonResult UpdateTaskStatus(Task task)
+        {
+            repository.UpdateStatus(task);
+            return Json(new OperationStatus());
+        }
+
     }
 }
